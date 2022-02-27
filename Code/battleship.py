@@ -242,7 +242,7 @@ def strike():
     display_board(attacker, attacker.upper_board)
     if not debug_mode:
         while True:
-            attacker_input = check_input("Please enter your strike with the format 'A1': ", regex_pattern_strike)
+            attacker_input = check_input("\nPlease enter your strike with the format 'A1': ", regex_pattern_strike)
             if attacker_input:
                 break
     else: # DEBUG
@@ -281,8 +281,9 @@ def inflict_damages(coord_attacker_input):
     # Attacker hits the sea
     else:
         attacker.upper_board.update_grid(False, coord_attacker_input, False)
-        print("\nMiss!\n")
+        print("\nMissed!\n")
         display_board(attacker, attacker.upper_board)
+    input("\nPress any key to continue...")
 
 # Attacker becomes defender, defender becomes attacker
 def switch():
@@ -340,6 +341,7 @@ print_separator()
 
 if not debug_mode:
     p1 = Player(input("Player 1: please enter your name: "))
+    print_separator()
     p2 = Player(input("Player 2: please enter your name: "))
 else: # DEBUG
     p1 = Player("Ting")
