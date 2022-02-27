@@ -283,7 +283,7 @@ def inflict_damages(coord_attacker_input):
         attacker.upper_board.update_grid(False, coord_attacker_input, False)
         print("\nMissed!\n")
         display_board(attacker, attacker.upper_board)
-    input("\nPress any key to continue...")
+    input("\nPress Enter to continue...")
 
 # Attacker becomes defender, defender becomes attacker
 def switch():
