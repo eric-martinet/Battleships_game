@@ -56,13 +56,15 @@ class Player:
     def position_ship(self, ship):
         print_separator()
         print(f"Placing {self.name}'s {ship.model} of size {ship.size}!\n")
+        print("Please enter the position with the format 'A1 r(ight)/d(own)'\nwhere A1 is the cell of origin and r/d is the direction: ")
         if not debug_mode:
             while True:
-                position_input = check_input("Please enter the position with the format 'A1 r(ight)/d(own)'\nwhere A1 is the cell of origin and r/d is the direction: ", regex_pattern_position)
+                position_input = check_input("", regex_pattern_position)
                 if position_input:
                     break
         else:
             position_input = debug_pattern_position_ships[self.ships.index(ship)] # DEBUG
+            print(position_input)
         position_input_tuple = convert_coords(position_input)
         ship.set_coords(position_input_tuple)
         if check_position_ship(self, ship):
@@ -161,7 +163,7 @@ def display_base_board():
     display_board_return = [underline(list_coords_row[i]) + " " + display_board_return[i] for i in range(10+1)]
     print("\n".join(display_board_return))
 
-def display_board(player, board_to_display):
+def display_board(player, board_to_display): # To transform as a method of class Board
     print(f"\n{player.name}: your {board_to_display.name}\n")
     display_board_return = [" ".join(board_to_display.grid[i]) for i in range(10)]
     # Add column ref 1-10 with underline
@@ -240,14 +242,16 @@ def select_first_attacker():
 def strike():
     print_separator()
     display_board(attacker, attacker.upper_board)
+    print("\nPlease enter your strike with the format 'A1': ")
     if not debug_mode:
         while True:
-            attacker_input = check_input("\nPlease enter your strike with the format 'A1': ", regex_pattern_strike)
+            attacker_input = check_input("", regex_pattern_strike)
             if attacker_input:
                 break
     else: # DEBUG
         global debug_pattern_strikes
         attacker_input = debug_pattern_strikes[0]
+        print(attacker_input)
         debug_pattern_strikes.remove(debug_pattern_strikes[0])
     strike_input_tuple = convert_coords(attacker_input)
     coord_attacker_input = check_strike_input(strike_input_tuple)
@@ -283,7 +287,8 @@ def inflict_damages(coord_attacker_input):
         attacker.upper_board.update_grid(False, coord_attacker_input, False)
         print("\nMissed!\n")
         display_board(attacker, attacker.upper_board)
-    input("\nPress Enter to continue...")
+    if not debug_mode:
+        input("\nPress Enter to continue...")
 
 # Attacker becomes defender, defender becomes attacker
 def switch():
