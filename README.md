@@ -40,6 +40,6 @@ Our repo is organised as follows:
 * [Presentation](https://github.com/eric-martinet/Battleships_game/tree/main/Presentation): Powerpoint presentation made to the class
 
 ## Links
-[Game's repository](https://github.com/eric-martinet/Battleships_game/)
+[Game's repository](https://github.com/eric-martinet/Battleships_game/) 
 [Presentation on Google slides](https://docs.google.com/presentation/d/1K_5tFlDcUJk0ru5bCAC2yqigA4j0xnnVPASRhLy8XQM/edit#slide=id.g11743c01ecd_0_0)
 For more information on the game: https://en.wikipedia.org/wiki/Battleship_(game).
